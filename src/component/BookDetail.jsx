@@ -1,5 +1,4 @@
 import React from 'react'
-import Avatar from 'react-avatar'
 import { Link } from 'react-router-dom'
 import { deleteBookAction } from '../action/addBookAction'
 import { useDispatch } from 'react-redux'
@@ -27,7 +26,7 @@ const BookDetail=(props) => {
         
               <tr>
                 <td>{props.list.id}</td>
-                <td><Avatar  name={props.list.author} size="45" round={true} className="mr-2" />{props.list.author}</td>
+                <td>{props.list.author}</td>
                 <td>{props.list.title}</td>                
                 <td>{props.list.price}</td>
                 <td>{props.list.edition}</td>
@@ -35,6 +34,7 @@ const BookDetail=(props) => {
                 <Link to={`/editbook/${props.list.id}`}>
                     <i className="material-icons mx-1">edit</i>
                 </Link>
+                &nbsp;&nbsp;
                 <i  onClick={(e)=>onDeleteBook(e) } className="material-icons mx-1 text-danger">remove_circle</i>
                
                 </td>

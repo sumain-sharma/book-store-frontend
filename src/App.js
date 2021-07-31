@@ -13,7 +13,6 @@ class App extends Component {
 
   render(){
     const user = this.props.users.users
-    console.log(this.props.users)
     if (!this.props.users.loading){
       if(this.props.users.is_authenticated){
           if(user.is_superuser){

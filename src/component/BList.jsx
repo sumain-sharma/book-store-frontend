@@ -33,7 +33,7 @@ const BList = () => {
       <div className="container mt-2">
         <Link to="/addbook" className="btn btn-success my-2 px-5"> Add Books</Link>
         <table className="table shadow  table-striped table-bordered table-sm">
-            <thead className="bg-danger text-white">
+            <thead className="bg-thead text-white">
                 <tr>
                 <th>
                     Id

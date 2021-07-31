@@ -19,7 +19,7 @@ const Orders=()=>{
         <div className="container mt-2">
    
         <table className="table shadow  table-striped table-bordered table-sm">
-            <thead className="bg-danger text-white">
+            <thead className="bg-thead text-white">
                 <tr>                          
                 <th>User Id</th>
                 <th>Book Id</th>
