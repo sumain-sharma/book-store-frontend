@@ -2,6 +2,7 @@
 
 table{
   text-align: left;
+  margin-top: 1.5rem;
     th {
     padding: 1rem !important;
   }
@@ -58,7 +59,6 @@ table{
 .rate > label:hover ~ input:checked ~ label {
   color: #c59b08;
 }
-
 nav a{
     text-decoration: none;
 }
@@ -83,3 +83,14 @@ body {
   margin-bottom: 12px;
   font-size: 10px;
   }
+.search {
+  width: 15rem;
+  background: #F2F1F9;
+  padding: 0.4rem;
+  margin-top: 0.4rem;
+  border: 3px solid #b9b8b8;
+  border-radius: 7px;
+}
+.add-book-button{
+  float: right;
+}

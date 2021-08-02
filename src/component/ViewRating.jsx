@@ -27,8 +27,7 @@ const ViewRating = () => {
 
     return (
         <div className="container mt-2">
-          <Link to="/addrating" className="btn btn-success my-2 px-5"> Rate Book</Link>
-                    
+        <Link to="/addrating" className="btn btn-success my-2 px-5"> Rate Book</Link>
         <MeterialTable title="Material Table"
         data = {blist}
         columns ={column}

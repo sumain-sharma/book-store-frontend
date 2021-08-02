@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 import {fetchBooks} from '../action/addBookAction';
 import MeterialTable from 'material-table';
 import { Redirect } from 'react-router';
+import SearchBooks from './SearchBook'
 
 const BList = () => {
     const blist = useSelector((state) => state.book_detail.blist);
@@ -22,55 +23,42 @@ const BList = () => {
     }
     useEffect(() => {
         fetchBooksDetail() }, []);
-    const column = [{title: "Author", field: "author"},
-        {title:"Title" , field:"title"},
-        {title:"Price", field:"price"},
-        {title:"Edition", field:"edition"}]  
+        const column = [
+            {title:"Title" , field:"title"},
+            {title: "Author", field: "author"},
+            {title:"Edition", field:"edition"},
+            {title:"Price", field:"price"},
+            {title:"Actions", field:"action"},
+        ]  
+
     if (userValidation.is_authenticated){     
-    if(userValidation.users.is_superuser){   
-    return (
-        
-      <div className="container mt-2">
-        <Link to="/addbook" className="btn btn-success my-2 px-5"> Add Books</Link>
-        <table className="table shadow  table-striped table-bordered table-sm">
-            <thead className="bg-thead text-white">
-                <tr>
-                <th>
-                    Id
-                </th>               
-                <th>Author</th>
-                <th>Title</th>
-                <th>Price</th>
-                <th>Edition</th>
-                <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                {
-                    blist.map((list) =>
-                    <BookDetail list={list} key={list.id}/>
-                    )
-                }  
-             
-            </tbody>
-        </table>
-       
-        </div>
-        )}
-    else{
-        return(<div className="container mt-2">
-        <Link to="/addrating" className="btn btn-success my-2 px-5"> Rate Book</Link>
-        <MeterialTable title="Material Table"
-        data = {blist}
-        columns ={column}
-        options={{
-                    pageSize: 10,
-                    padding: 'dense',
-                    pageSizeOptions: [20, 50]
-                  }}               
-                  />
-                  </div>);
-    } 
+        return (
+            <div className="container mt-2">
+                <SearchBooks/>
+                { userValidation.users.is_superuser? 
+                <Link to="/addbook" className="btn btn-success my-1 px-2 add-book-button"> Add Books</Link>: 
+                <Link to="/addrating" className="btn btn-success my-2 px-5 add-book-button"> Rate Book</Link>}
+                <table className="table shadow  table-striped table-bordered table-sm">
+                    <thead className="bg-thead text-white">
+                        <tr>
+                            <th>Id</th>        
+                            <th>Title</th>       
+                            <th>Author</th>
+                            <th>Edition</th>
+                            <th>Price</th>
+                            { userValidation.users.is_superuser && <th>Action</th> }
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            blist.map((list) =>
+                            <BookDetail list={list} key={list.id} is_superuser={userValidation.users.is_superuser}/>
+                            )
+                        }  
+                    </tbody>
+                </table>
+            </div>
+            )
     }
     else{
         return(

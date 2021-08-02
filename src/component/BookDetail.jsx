@@ -1,10 +1,8 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import { deleteBookAction } from '../action/addBookAction'
-import { useDispatch } from 'react-redux'
-import axios from 'axios'
-
-
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { deleteBookAction } from '../action/addBookAction';
+import { useDispatch } from 'react-redux';
+import axios from 'axios';
 
 
 const BookDetail=(props) => {
@@ -23,21 +21,21 @@ const BookDetail=(props) => {
       
         }
     return (
-        
               <tr>
                 <td>{props.list.id}</td>
+                <td>{props.list.title}</td>  
                 <td>{props.list.author}</td>
-                <td>{props.list.title}</td>                
-                <td>{props.list.price}</td>
                 <td>{props.list.edition}</td>
-                <td>
-                <Link to={`/editbook/${props.list.id}`}>
-                    <i className="material-icons mx-1">edit</i>
-                </Link>
-                &nbsp;&nbsp;
-                <i  onClick={(e)=>onDeleteBook(e) } className="material-icons mx-1 text-danger">remove_circle</i>
-               
-                </td>
+                <td>{props.list.price}</td>
+                { props.is_superuser &&
+                    <td>
+                        <Link to={`/editbook/${props.list.id}`}>
+                            <i className="material-icons mx-1">edit</i>
+                        </Link>
+                        &nbsp;&nbsp;
+                        <i  onClick={(e)=>onDeleteBook(e) } className="material-icons mx-1 text-danger">remove_circle</i>
+                    </td>
+                }
             </tr>  
        
     )

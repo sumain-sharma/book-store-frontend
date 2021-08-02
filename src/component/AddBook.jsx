@@ -17,7 +17,6 @@ const AddBook =()=>{
         e.preventDefault();
         const new_book = {
             title:title,
-            id: shortid.generate(),
             author:author,
             price:price,
             edition:edition,
